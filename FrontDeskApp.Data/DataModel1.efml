@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<efcore context-namespace="FrontDeskApp.Context" namespace="FrontDeskApp.Entities" p1:name="FrontDeskAppDbModel" p1:Guid="6013fffb-f108-4a4b-a314-6a02ac6fbfde" p1:EntityBase="BaseEntity" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0">
+  <class name="AreaBox" entity-set="AreaBoxes" table="AreaBoxes" schema="dbo" p1:Guid="552b9667-15bf-4ef4-b7f0-9277fb9e7320">
+    <id name="AreaBoxId" type="Int32" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="23764f64-a3ec-484a-8c2c-63e370ba9fe7">
+      <column name="AreaBoxId" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </id>
+    <property name="Name" type="String" p1:ValidateMaxLength="10" p1:ValidateRequired="true" p1:Guid="5ab461a4-6907-4ee3-8daa-d44882db48fc">
+      <column name="Name" not-null="True" length="10" sql-type="nchar" p1:fixed-length="True" p1:unicode="True" />
+    </property>
+    <property name="AreaType" type="String" p1:nullable="True" p1:ValidateMaxLength="10" p1:ValidateRequired="false" p1:Guid="2af67137-2295-465c-a4f5-ab29d6784df5">
+      <Documentation>
+        <Summary>Small, Medium, Large</Summary>
+      </Documentation>
+      <column name="AreaType" not-null="False" length="10" sql-type="nchar" p1:fixed-length="True" p1:unicode="True" />
+    </property>
+    <property name="Status" type="String" p1:nullable="True" p1:ValidateMaxLength="10" p1:ValidateRequired="false" p1:Guid="61a03210-8d6b-4bbc-9888-652d554b1694">
+      <Documentation>
+        <Summary>Vacant, Occupied</Summary>
+      </Documentation>
+      <column name="Status" not-null="False" length="10" sql-type="nchar" p1:fixed-length="True" p1:unicode="True" />
+    </property>
+  </class>
+  <class name="Customer" entity-set="Customers" table="Customers" schema="dbo" p1:Guid="29cabf40-9a84-4d9f-8230-edafa2f54b7b">
+    <id name="CustomerId" type="Int32" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="350edea2-d9c3-4dc3-8f8a-9aa1f96406ed">
+      <column name="CustomerId" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </id>
+    <property name="FirstName" type="String" p1:ValidateMaxLength="50" p1:ValidateRequired="true" p1:Guid="7b92970e-1557-4cd6-84d4-5e1e457f7dc3">
+      <column name="FirstName" not-null="True" length="50" sql-type="nvarchar" p1:unicode="True" />
+    </property>
+    <property name="LastName" type="String" p1:ValidateMaxLength="50" p1:ValidateRequired="true" p1:Guid="2cb1c683-80bb-4527-ab18-0dda13a7a47d">
+      <column name="LastName" not-null="True" length="50" sql-type="nvarchar" p1:unicode="True" />
+    </property>
+    <property name="PhoneNumber" type="String" p1:ValidateMaxLength="20" p1:ValidateRequired="true" p1:Guid="05b68ae6-5e63-43a9-8cdd-07b5bd505811">
+      <column name="PhoneNumber" not-null="True" length="20" sql-type="nvarchar" p1:unicode="True" />
+    </property>
+  </class>
+  <class name="Transaction" entity-set="Transactions" table="Transactions" schema="dbo" p1:Guid="4711ccd6-6f8f-494c-8dd6-7cf0f6c71f39">
+    <id name="TransactionId" type="Int32" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="3580637a-0b95-40cb-8748-a646c5fbc46c">
+      <column name="TransactionId" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </id>
+    <property name="CustomerId" type="Int32" p1:ValidateRequired="true" p1:Guid="40efcd87-77b5-4e61-8783-f4bf5258582b">
+      <column name="CustomerId" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </property>
+    <property name="AreaBoxId" type="Int32" p1:ValidateRequired="true" p1:Guid="4f9c3090-bbb4-4b7b-a973-aec92b993154">
+      <column name="AreaBoxId" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </property>
+    <property name="DateStored" type="DateTime" p1:ValidateRequired="true" p1:Guid="93d6bc88-c850-4eee-87c0-459cbc11e9d6">
+      <column name="DateStored" not-null="True" sql-type="datetime2" p1:unicode="False" />
+    </property>
+    <property name="DateRetrieved" type="DateTime" p1:ValidateRequired="true" p1:Guid="c071fc57-cfa9-44b4-8468-6c0d0f440220">
+      <column name="DateRetrieved" not-null="True" sql-type="datetime2" p1:unicode="False" />
+    </property>
+    <property name="Status" type="String" p1:ValidateMaxLength="10" p1:ValidateRequired="true" p1:Guid="81ea1554-04cc-4da9-93cb-b64ceb24f663">
+      <Documentation>
+        <Summary>STORED, RETRIEVED</Summary>
+      </Documentation>
+      <column name="Status" not-null="True" length="10" sql-type="nchar" p1:fixed-length="True" p1:unicode="True" />
+    </property>
+  </class>
+  <associations>
+    <association name="Customer_Transaction" cardinality="OneToMany" p1:Guid="ab12635b-aebd-4529-9266-475b73331329">
+      <end1 multiplicity="One" name="Customer" class="Transaction" relation-class="Customer" constrained="True" lazy="False" p1:Guid="0845d261-6518-4adf-b738-8a5da480bd1b">
+        <property name="CustomerId" />
+      </end1>
+      <end2 multiplicity="Many" name="Transactions" class="Customer" relation-class="Transaction" lazy="False" p1:Guid="e2473097-297a-4c59-b58f-0fae77bb3dee">
+        <property name="CustomerId" />
+      </end2>
+    </association>
+    <association name="AreaBox_Transaction" cardinality="OneToMany" p1:Guid="20711ef5-e19a-4f7d-9c2c-7bfd4880d6d0">
+      <end1 multiplicity="One" name="AreaBox" class="Transaction" relation-class="AreaBox" constrained="True" lazy="False" p1:Guid="7cf5d989-5b72-499a-bd95-b5041292e575">
+        <property name="AreaBoxId" />
+      </end1>
+      <end2 multiplicity="Many" name="Transactions" class="AreaBox" relation-class="Transaction" lazy="False" p1:Guid="73ff84b2-a334-4a0d-b768-64815637f311">
+        <property name="AreaBoxId" />
+      </end2>
+    </association>
+  </associations>
+</efcore>

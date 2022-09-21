@@ -19,7 +19,14 @@ namespace FrontDeskApp.Data
             return objectSet.Where(e => e.AreaType.Equals(size) && e.Status == "VACANT").ToList();
         }
 
-    
+        public virtual ICollection<FrontDeskApp.Entities.AreaBox> GetByStatus(string status)
+        {
+            if(status == "")
+                return objectSet.ToList();
+            else
+                return objectSet.Where(e => e.Status.Trim() == status).ToList();
+        }
+
 
         public virtual string SmallCount()
         {

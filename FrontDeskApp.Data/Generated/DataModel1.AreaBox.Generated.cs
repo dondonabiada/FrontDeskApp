@@ -47,6 +47,7 @@ namespace FrontDeskApp.Entities
         /// <summary>
         /// There are no comments for Name in the schema.
         /// </summary>
+        [DisplayName("Box")]
         [StringLength(10)]
         [Required(ErrorMessage = @"Data is required.")]
         public virtual string Name { get; set; }
@@ -54,6 +55,7 @@ namespace FrontDeskApp.Entities
         /// <summary>
         /// Small, Medium, Large
         /// </summary>
+        [DisplayName("Type")]
         [StringLength(10)]
         public virtual string AreaType { get; set; }
 

@@ -134,7 +134,19 @@ namespace FrontDeskApp.WinApp
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            string st = (string)comboBox1.SelectedItem.ToString().Trim();
+            switch(st)
+            {
+                case "---- ALL ----":
+                    bindingSource2.DataSource = AreaBoxesRepo.GetByStatus("");
+                    break;
+                case "VACANT":
+                case "OCCUPIED":
+                    bindingSource2.DataSource = AreaBoxesRepo.GetByStatus(st);
+                    break;
+            };
+            
+            dgAreaBoxes.DataSource = bindingSource2;
         }
     }
 }

@@ -12,6 +12,7 @@ namespace FrontDeskApp.Entities
 
     public partial class Transaction
     {
+        [DisplayName("Customer Name")]
         public virtual string CustomerName
         {
             get
@@ -23,6 +24,7 @@ namespace FrontDeskApp.Entities
             }
         }
 
+        [DisplayName("Box")]
         public virtual string BoxName
         {
             get
@@ -34,6 +36,7 @@ namespace FrontDeskApp.Entities
             }
         }
 
+        [DisplayName("Type")]
         public virtual string AreaType
         {
             get

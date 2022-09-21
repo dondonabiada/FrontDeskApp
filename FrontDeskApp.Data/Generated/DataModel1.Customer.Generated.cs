@@ -47,6 +47,7 @@ namespace FrontDeskApp.Entities
         /// <summary>
         /// There are no comments for FirstName in the schema.
         /// </summary>
+        [DisplayName("First Name")]
         [StringLength(50)]
         [Required(ErrorMessage = @"Data is required.")]
         public virtual string FirstName { get; set; }
@@ -54,6 +55,7 @@ namespace FrontDeskApp.Entities
         /// <summary>
         /// There are no comments for LastName in the schema.
         /// </summary>
+        [DisplayName("Last Name")]
         [StringLength(50)]
         [Required(ErrorMessage = @"Data is required.")]
         public virtual string LastName { get; set; }
@@ -61,6 +63,7 @@ namespace FrontDeskApp.Entities
         /// <summary>
         /// There are no comments for PhoneNumber in the schema.
         /// </summary>
+        [DisplayName("Phone No.")]
         [StringLength(20)]
         [Required(ErrorMessage = @"Data is required.")]
         public virtual string PhoneNumber { get; set; }

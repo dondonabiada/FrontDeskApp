@@ -58,12 +58,14 @@ namespace FrontDeskApp.Entities
         /// <summary>
         /// There are no comments for DateStored in the schema.
         /// </summary>
+        [DisplayName("Date Stored")]
         [Required(ErrorMessage = @"Data is required.")]
         public virtual DateTime DateStored { get; set; }
 
         /// <summary>
         /// There are no comments for DateRetrieved in the schema.
         /// </summary>
+        [DisplayName("Date Retrieved")]
         [Required(ErrorMessage = @"Data is required.")]
         public virtual DateTime DateRetrieved { get; set; }
 

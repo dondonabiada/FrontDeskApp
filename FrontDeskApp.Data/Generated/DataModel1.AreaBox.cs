@@ -15,7 +15,8 @@ namespace FrontDeskApp.Entities
 
     public partial class AreaBox
     {
-       
+
+        [DisplayName("Customer Name")]
         public virtual string CustomerName
         {
             get
